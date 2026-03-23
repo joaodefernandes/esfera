@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade: Esfera Colorida</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a; /* Fundo escuro para destacar a esfera */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .esfera {
+            width: 250px;
+            height: 250px;
+            background-color: #ff0000; /* Inicia com Vermelho */
+            border-radius: 50%;
+            margin: 30px auto;
+            cursor: pointer;
+            
+            /* Transição suave */
+            transition: background-color 0.5s ease, transform 0.3s ease;
+            
+            /* Sombra interna para efeito 3D mais realista */
+            box-shadow: inset -30px -30px 60px rgba(0,0,0,0.5), 
+                        0 0 40px rgba(255, 0, 0, 0.3);
+        }
+
+        .esfera:hover {
+            transform: scale(1.15);
+        }
+
+        h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Toque na esfera para ver a magia!</h1>
+        <div class="esfera" id="minhaEsfera"></div>
+    </div>
+
+    <script>
+        const esfera = document.getElementById('minhaEsfera');
+
+        // Lista de cores variadas para alternar
+        const cores = [
+            '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', 
+            '#0000FF', '#4B0082', '#9400D3', '#00FFFF', 
+            '#FF1493', '#ADFF2F'
+        ];
+        
+        let indiceCor = 0;
+
+        // Função que muda para a próxima cor da lista
+        function mudarCorLista() {
+            indiceCor = (indiceCor + 1) % cores.length;
+            const novaCor = cores[indiceCor];
+            esfera.style.backgroundColor = novaCor;
+            // Ajusta o brilho da sombra para combinar com a cor atual
+            esfera.style.boxShadow = `inset -30px -30px 60px rgba(0,0,0,0.5), 0 0 40px ${novaCor}44`;
+        }
+
+        // Evento ao passar o mouse
+        esfera.addEventListener('mouseenter', mudarCorLista);
+    </script>
+
+</body>
+</html>
